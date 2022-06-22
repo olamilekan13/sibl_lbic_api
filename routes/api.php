@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LbicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,5 +19,29 @@ use App\Http\Controllers\AuthController;
 //     return $request->user();
 // });
 
-Route::post('auth/login', [AuthController::class, 'login']);
-Route::post('auth/register', [AuthController::class, 'register']);
+
+// Route::post('auth/register', [AuthController::class, 'register']);
+
+Route::post('auth/login', [LbicController::class, 'login']);
+//route for lbic admin only
+Route::group(['middleware' => 'lbic_auth'], function () {
+    Route::group(['prefix' => 'auth'], function () {
+       
+
+Route::post('viewAllRegisteredUser', [LbicController::class, 'viewAllRegisteredUser']);
+
+
+
+
+
+
+
+
+
+
+
+
+
+});
+});
+

@@ -3,6 +3,10 @@
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use App\Http\Middleware\LbicMiddleware;
+use App\Http\Middleware\SiblMiddleware;
+use App\Http\Middleware\UserMiddleware;
+
 
 class Kernel extends HttpKernel
 {

@@ -17,10 +17,15 @@ class LbicMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
+         Auth::shouldUse('api');
         if(Auth::check() && Auth::user()->lbic())
         {
             return $next($request);
         }
-        return redirect()->route('login')->with('danger', 'Unauthorized');
+        
+        return response()->json([
+            'error' => 'Unauthorized'
+        ], 401);
+        // return redirect()->route('login')->with('danger', 'Unauthorized');
     }
 }
