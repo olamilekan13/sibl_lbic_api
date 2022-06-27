@@ -54,7 +54,7 @@ class SiblController extends Controller
     // view all registered allotees
 
     
-    public function siblviewAllRegisteredUser(){
+    public function siblViewAllRegisteredUser(){
 
         try{
 
