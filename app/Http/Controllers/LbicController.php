@@ -51,7 +51,7 @@ class LbicController extends Controller
 
 
 
-    public function libcviewAllRegisteredUser(){
+    public function lbicviewAllRegisteredUser(){
 
         try{
 

@@ -34,7 +34,7 @@ Route::group(['middleware' => 'lbic_auth'], function () {
     Route::group(['prefix' => 'auth'], function () {
        
 
-Route::post('libcviewAllRegisteredUser', [LbicController::class, 'libcviewAllRegisteredUser']);
+Route::post('lbicviewAllRegisteredUser', [LbicController::class, 'lbicviewAllRegisteredUser']);
 
 
 
