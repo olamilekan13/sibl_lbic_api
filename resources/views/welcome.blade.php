@@ -45,7 +45,7 @@ function payWithPaystack() {
     email: 'ola@g.com',
     amount: 5000,
     currency: 'NGN', // Use GHS for Ghana Cedis or USD for US Dollars
-    ref: '{{ rand() }}', // Replace with a reference you generated
+    // ref: '{{ rand() }}', // Replace with a reference you generated
     
     callback: function(response) {
 
