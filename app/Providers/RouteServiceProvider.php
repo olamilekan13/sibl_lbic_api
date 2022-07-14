@@ -52,6 +52,16 @@ class RouteServiceProvider extends ServiceProvider
                 ->middleware('api')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/allotee.php'));
+
+            Route::prefix('lbic')
+                ->middleware('api')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/lbic.php'));
+
+            Route::prefix('sibl')
+                ->middleware('api')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/sibl.php'));
         });
     }
 
