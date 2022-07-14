@@ -2,8 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LbicController;
-use App\Http\Controllers\SiblController;
+use App\Http\Controllers\Lbic\LbicController;
+use App\Http\Controllers\Sibl\SiblController;
+use App\Http\Controllers\Allotee\AuthController;
+
 
 
 /*
@@ -26,6 +28,8 @@ use App\Http\Controllers\SiblController;
 
 Route::post('auth/login', [LbicController::class, 'login']);
 Route::post('auth/login', [SiblController::class, 'login']);
+Route::post('auth/login', [AuthController::class, 'login']);
+Route::post('auth/register', [AuthController::class, 'register']);
 
 
 
