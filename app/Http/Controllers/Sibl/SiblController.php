@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Sibl;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Hash;
 use Session;
 use Validator;
 use JWTAuth;
 use App\Models\User;
+use App\Models\coverPlan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Tymon\JWTAuth\Exceptions\JWTException;
@@ -16,11 +18,14 @@ use Illuminate\Support\Str;
 use App\Models\PasswordReset;
 use App\Mail\ResetPasswordEmail;
 
-
-class LbicController extends Controller
+class SiblController extends Controller
 {
+    //
     
-     public function login(Request $request){
+    // login for sibl admin
+
+
+    public function login(Request $request){
         try
         {
             $this->validate($request, [
@@ -50,8 +55,10 @@ class LbicController extends Controller
 
 
 
+    // view all registered allotees
 
-    public function lbicviewAllRegisteredUser(){
+    
+    public function siblViewAllRegisteredUser(){
 
         try{
 
@@ -70,6 +77,34 @@ class LbicController extends Controller
     }
 
 
+
+    // For admin to set cover plan
+
+    public function createCoverPlan(Request $request)
+{
+  $request->validate([
+    'cover_type' => 'required|max:255',
+    'cover_flat' => 'required',
+    'cover_price' => 'required'
+  ]);
+
+  $coverplan = new coverPlan([
+    'cover_type' => $request->get('cover_type'),
+    'cover_flat' => $request->get('cover_flat'),
+    'cover_price' => $request->get('cover_price'),
+  ]);
+
+  $coverplan->save();
+
+  return response()->json($coverplan);
+}
+
+
+
+
+
+
+
     /**
      * Get the token array structure.
      *
@@ -85,7 +120,6 @@ class LbicController extends Controller
             'user' => auth('api')->user()
         ]);
     }
-
 
 
 
