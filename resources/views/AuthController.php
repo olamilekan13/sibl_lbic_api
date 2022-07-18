@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Allotee;
 
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use Validator;
 use JWTAuth;
@@ -19,10 +18,9 @@ use Illuminate\Validation\ValidationException;
 use App\Models\PasswordReset;
 use App\Mail\ResetPasswordEmail;
 
-
 class AuthController extends Controller
 {
-    //
+    
 
     /**
      * Create a new AuthController instance.
@@ -218,6 +216,10 @@ catch (\Exception $e) {
             'user' => auth('api')->user()
         ]);
     }
+
+
+
+
 
 
 }
