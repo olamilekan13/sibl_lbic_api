@@ -17,10 +17,8 @@ use App\Http\Controllers\Allotee\AuthController;
 
 Route::group(['middleware' => 'user_auth'], function () {
     Route::group(['prefix' => 'auth'], function () {
-
-
-
-Route::get('show/{id}', [AuthController::class, 'show']);  
+Route::get('show/{id}', [AuthController::class, 'show']);
+Route::post('getCover', [AuthController::class, 'getCover']); 
 
 
 
