@@ -19,8 +19,8 @@ use App\Http\Controllers\Sibl\SiblController;
 
 //route for sibl admin only
 Route::group(['middleware' => 'sibl_auth'], function () {
-     Route::group(['prefix' => 'auth'], function () {
-        Route::post('siblViewAllRegisteredUser', [SiblController::class, 'siblViewAllRegisteredUser']);
+        Route::group(['prefix' => 'auth'], function () {
+        Route::get('siblViewAllRegisteredUser', [SiblController::class, 'siblViewAllRegisteredUser']);
         Route::post('createCoverPlan', [SiblController::class, 'createCoverPlan']);
 });
 });
