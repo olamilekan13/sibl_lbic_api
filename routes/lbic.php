@@ -22,7 +22,7 @@ use App\Http\Controllers\Lbic\LbicController;
 Route::group(['middleware' => 'lbic_auth'], function () {
 
     Route::group(['prefix' => 'auth'], function () {
-        Route::post('lbicviewAllRegisteredUser', [LbicController::class, 'lbicviewAllRegisteredUser']);
+        Route::get('lbicviewAllRegisteredUser', [LbicController::class, 'lbicviewAllRegisteredUser']);
     });
 
 });
