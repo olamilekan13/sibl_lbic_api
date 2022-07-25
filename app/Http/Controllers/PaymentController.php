@@ -3,10 +3,49 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\CoverPlan;
+use App\Models\UserCoverPlan;
+use App\Models\Transactions;
 
 class PaymentController extends Controller
 {
-    //
+
+
+    public function subscribeCoverPlan(){
+         
+        try
+        {
+            $this->validate($request, [
+                'cover_id' => 'required',
+                'reference' => 'required',
+            ]);
+            $user = Auth::user();
+             
+            $checkcover = CoverPlan::where('id', $request->cover_id)->first();
+            if(!$checkcover)
+            {
+                return response()->json([
+                'error' => 'Invalid cover plan'
+                ], 422);
+            }
+
+            $verifypayment = $this->verifyPaystackPayment($request->reference);
+
+            dd($verifypayment);
+
+
+        } catch (ValidationException $e) {
+            return response()->json([
+                "error" => $e->validator->errors()->first()
+            ], 422);
+        } catch (\Exception $e) {
+            return response()->json([
+                "error" => $e->getMessage()
+            ], 500);
+        }
+
+}
 
     protected function verifyPaystackPayment($reference)
     {
@@ -34,4 +73,4 @@ class PaymentController extends Controller
 
 }
 
-$this->verifyPaystackPayment($request->payment_reference);
+// $this->verifyPaystackPayment($request->payment_reference);

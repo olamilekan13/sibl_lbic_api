@@ -59,12 +59,11 @@ class LbicController extends Controller
 
 
          $allotees = User::get();
-        
-         return response()->json(['allotees'=>$allotees],200);
+            return response()->json(['allotees'=>$allotees],200);
         // $allotee->address ;
     
-        } catch (\Exception $e) {
-            return response()->json([
+                } catch (\Exception $e) {
+                    return response()->json([
                 "error" => $e->getMessage()
             ], 500);
         }

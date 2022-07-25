@@ -17,7 +17,7 @@ class CreateCoverPlansTable extends Migration
              $table->id();
             $table->string('cover_type');
             $table->string('cover_flat');
-            $table->integer('cover_price');
+            $table->double('cover_price');
             $table->timestamps();
         });
     }

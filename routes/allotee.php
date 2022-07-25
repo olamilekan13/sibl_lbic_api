@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Allotee\AuthController;
+use App\Http\Controllers\Allotee\PlanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,15 +18,11 @@ use App\Http\Controllers\Allotee\AuthController;
 
 Route::group(['middleware' => 'user_auth'], function () {
     Route::group(['prefix' => 'auth'], function () {
-Route::get('show/{id}', [AuthController::class, 'show']);
-Route::post('getCover', [AuthController::class, 'getCover']); 
+        Route::get('show/{id}', [AuthController::class, 'show']);
+             
+    });
 
-
-
-
-
-
-
-      
-});
+    Route::group(['prefix' => 'plan'], function () {
+        Route::post('get-cover', [PlanController::class, 'getCover']); 
+    });
 });
